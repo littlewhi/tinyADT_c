@@ -1,15 +1,15 @@
 #include <assert.h>
 #include <stdlib.h>
 
-#define GENERIC_STATIC_STACK_STRUCT( element_type, suffix, stack_size ) \
-    struct stack_##suffix{                                                \
-        int     _size;                                                   \
+#define GENERIC_STATIC_STACK_STRUCT( element_type, suffix, stack_size )\
+    struct stack_##suffix{\
+        int     _size;\
         int     _index;\
         element_type _data[stack_size];\
         int (*is_empty)( struct stack_##suffix *self );\
         int (*is_full)( struct stack_##suffix *self );\
         void (*push)( struct stack_##suffix *self, element_type e );\
-        void (*pop)( struct stack_##suffix *self );   \
+        void (*pop)( struct stack_##suffix *self );\
         element_type (*top)( struct stack_##suffix *self);\
     }
                                                         
