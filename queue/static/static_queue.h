@@ -70,5 +70,5 @@ void destroy_static_queue_##suffix( struct queue_##suffix *p )\
     free( p );\
 }
 
-#define GENERIC_STATIC_QUEUE_OBJ( suffix ) get_static_queue_##suffix();
-#define DESTROY_STATIC_QUEUE_OBJ( p, suffix ) destroy_static_queue_##suffix( p );
+#define GENERIC_STATIC_QUEUE_OBJ( suffix ) get_static_queue_##suffix()
+#define DESTROY_STATIC_QUEUE_OBJ( p, suffix ) destroy_static_queue_##suffix( p )
