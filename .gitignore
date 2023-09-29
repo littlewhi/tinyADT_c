@@ -1,3 +1,4 @@
 *.o
 test[1-9]
 .dist
+.vscode
