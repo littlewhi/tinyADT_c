@@ -129,6 +129,29 @@ void post_traversal_##suffix( struct bst_##suffix *self, index_type i, void(* fu
     } \
 } \
 \
+void bf_traversal_##suffix( struct bst_##suffix *self,  index_type i, void (*func_for_e)(element_type*) ) \
+{ \
+    index_type tmp_queue[bst_size]; \
+    int f = 0, b = 0; \
+    int cnt = 0; \
+    \
+    if( !self->_check_node[i] ) \
+        return; \
+    \
+    tmp_queue[b++] = i; \
+    cnt++; \
+    while( cnt ) \
+    {\
+        i = tmp_queue[f++]; \
+        cnt--; \
+        func_for_e( self->_nodes + i ); \
+        if( self->_check_node[i * 2 + 1] ) \
+            tmp_queue[b++] = i * 2 + 1, cnt++; \
+        if( self->_check_node[i * 2 + 2] ) \
+            tmp_queue[b++] = i * 2 + 2, cnt++; \
+    } \
+} \
+\
 index_type remove_##suffix( struct bst_##suffix *self, element_type e ) \
 { \
     index_type cur = 0; \
@@ -182,6 +205,7 @@ void get_static_bst_##suffix( struct bst_##suffix *p, int( *cmp )( void *a, void
     p->pre_traversal = pre_traversal_##suffix; \
     p->mid_traversal = mid_traversal_##suffix; \
     p->post_traversal = post_traversal_##suffix; \
+    p->bf_traversal = bf_traversal_##suffix; \
     p->remove = remove_##suffix; \
     \
 }
