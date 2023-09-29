@@ -1,5 +1,5 @@
 This is a ADT(abstract data structure) library in which now there are simple versions of **Stack**, **Queue** and **Binary Search Tree**.
-This library is inspired by the chapter 17th of the book "Pointers on C". I make a fusion of the micro usages in C and OOP to build a little library.
+This library is inspired by the chapter 17th of the book "Pointers on C". I make a fusion of the micro usages in C and OOP to build a little library. The private part I use '_' as prefix to be distinguished from the public methods. Please be aware that.
 There are test codes for usages in case that I cannot explain well it.
 1. **Stack**
     1. _Static Stack_
