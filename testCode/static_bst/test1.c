@@ -44,6 +44,9 @@ int main( void )
     printf( "Postorder traversal : \n" );
     t1->post_traversal( t1, 0, traversal_func );
     printf( "\n" );
+    printf( "Breadth first traversal : \n" );
+    t1->bf_traversal( t1, 0, traversal_func );
+    printf( "\n" );
     printf( "delete 3 in the tree \n" );
     t1->remove( t1, 3 );
     t1->mid_traversal( t1, 0, traversal_func );
