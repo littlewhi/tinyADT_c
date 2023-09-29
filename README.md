@@ -1,4 +1,4 @@
-This is a ADT(abstract data structure) library in which now there are **Stack**, **Queue** and **Binary Search Tree**.
+This is a ADT(abstract data structure) library in which now there are simple versions of **Stack**, **Queue** and **Binary Search Tree**.
 This library is inspired by the chapter 17th of the book "Pointers on C". I make a fusion of the micro usages in C and OOP to build a little library.
 There are test codes for usages in case that I cannot explain well it.
 1. **Stack**
