@@ -1,5 +1,4 @@
 #include <assert.h>
-#include <stdlib.h>
 
 #define GENERIC_STATIC_QUEUE_STRUCT( element_type, suffix, queue_size )\
 struct queue_##suffix{\
@@ -50,25 +49,19 @@ void pop_##suffix( struct queue_##suffix *self )\
     self->_front = ( self->_front + 1 ) % self->_size;\
 }\
 \
-struct queue_##suffix *get_static_queue_##suffix( void )\
+void get_static_queue_##suffix( struct queue_##suffix *p )\
 {\
-    struct queue_##suffix *ret = (struct queue_##suffix *)malloc( sizeof( struct queue_##suffix ) );\
-    ret->_size = queue_size + 1;\
-    ret->_front = 0;\
-    ret->_tail = 0;\
-    ret->is_empty = is_empty_##suffix;\
-    ret->is_full = is_full_##suffix;\
-    ret->get_front = get_front_##suffix;\
-    ret->get_tail = get_tail_##suffix;\
-    ret->push = push_##suffix;\
-    ret->pop = pop_##suffix;\
-    return ret;\
+    if( !p )\
+        return;\
+    p->_size = queue_size + 1;\
+    p->_front = 0;\
+    p->_tail = 0;\
+    p->is_empty = is_empty_##suffix;\
+    p->is_full = is_full_##suffix;\
+    p->get_front = get_front_##suffix;\
+    p->get_tail = get_tail_##suffix;\
+    p->push = push_##suffix;\
+    p->pop = pop_##suffix;\
 }\
-\
-void destroy_static_queue_##suffix( struct queue_##suffix *p )\
-{\
-    free( p );\
-}
 
-#define GENERIC_STATIC_QUEUE_OBJ( suffix ) get_static_queue_##suffix()
-#define DESTROY_STATIC_QUEUE_OBJ( p, suffix ) destroy_static_queue_##suffix( p )
+#define GENERIC_STATIC_QUEUE_OBJ( suffix, p ) get_static_queue_##suffix( p )

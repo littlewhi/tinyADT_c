@@ -26,7 +26,8 @@ void traversal_func( int *e )
 int main( void )
 {
     int arr[] = { 3, 2, 5, 1, 4, 6 };
-    struct bst_test1 *t1 = GENERIC_STATIC_BST_OBJ( test1, cmp_for_t1 );
+    struct bst_test1 *t1 = malloc( sizeof( struct bst_test1 ));
+    GENERIC_STATIC_BST_OBJ( test1, t1, cmp_for_t1 );
     
     printf( "Construct a binary tree :\n" );
     printf( "   3\n" );
@@ -47,5 +48,6 @@ int main( void )
     t1->remove( t1, 3 );
     t1->mid_traversal( t1, 0, traversal_func );
     printf( "\n" );
-    DESTROY_STATIC_BST_OBJ( t1, test1 ); 
+
+    free( t1 );
 }

@@ -169,27 +169,21 @@ index_type remove_##suffix( struct bst_##suffix *self, element_type e ) \
     return -1; \
 } \
 \
-struct bst_##suffix *get_static_bst_##suffix( int( *cmp )( void *a, void *b ) ) \
+void get_static_bst_##suffix( struct bst_##suffix *p, int( *cmp )( void *a, void *b ) ) \
 { \
-    struct bst_##suffix *ret = malloc( sizeof( struct bst_##suffix ) ); \
+    if( !p )\
+        return;\
     \
-    memset( ret->_check_node, 0, sizeof( char ) * bst_size * 2); \
-    ret->_size = bst_size; \
-    ret->_comparison = cmp; \
-    ret->insert = insert_##suffix; \
-    ret->find = find_##suffix; \
-    ret->pre_traversal = pre_traversal_##suffix; \
-    ret->mid_traversal = mid_traversal_##suffix; \
-    ret->post_traversal = post_traversal_##suffix; \
-    ret->remove = remove_##suffix; \
+    memset( p->_check_node, 0, sizeof( p->_check_node ) ); \
+    p->_size = bst_size; \
+    p->_comparison = cmp; \
+    p->insert = insert_##suffix; \
+    p->find = find_##suffix; \
+    p->pre_traversal = pre_traversal_##suffix; \
+    p->mid_traversal = mid_traversal_##suffix; \
+    p->post_traversal = post_traversal_##suffix; \
+    p->remove = remove_##suffix; \
     \
-    return ret; \
-} \
-\
-void destroy_static_bst_##suffix( struct bst_##suffix *p ) \
-{ \
-    free( p ); \
 }
 
-#define GENERIC_STATIC_BST_OBJ( suffix, cmp ) get_static_bst_##suffix( cmp ) 
-#define DESTROY_STATIC_BST_OBJ( p, suffix ) destroy_static_bst_##suffix( p )
+#define GENERIC_STATIC_BST_OBJ( suffix, p, cmp ) get_static_bst_##suffix( p, cmp ) 
