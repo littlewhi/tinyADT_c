@@ -1,5 +1,6 @@
 #include "../../stack/static/static_stack.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 GENERIC_STATIC_STACK_STRUCT( int, test1, 10 );
 GENERIC_STATIC_STACK_METHOD( int, test1, 10 );
@@ -8,7 +9,7 @@ int main( void )
 {
     struct stack_test1 *st1 = malloc( sizeof( struct stack_test1 ) );
 
-    GENERIC_STATIC_STACK_OBJECT( test1, st1 );
+    GENERIC_STATIC_STACK_OBJ( test1, st1 );
 
     printf( "It is empty?\n" );
     printf( "%s\n", st1->is_empty( st1 ) ? "YES" : "NO" );
