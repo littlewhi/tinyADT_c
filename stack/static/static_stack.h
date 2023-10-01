@@ -53,10 +53,5 @@ void get_object_##suffix( struct stack_##suffix *p ) \
     p->pop = pop_##suffix;\
     p->top = top_##suffix;\
 }\
-\
-void destroy_stack_##suffix( struct stack_##suffix *p )\
-{\
-    free( p );\
-}
 
 #define GENERIC_STATIC_STACK_OBJ( suffix, p ) get_object_##suffix( p )
