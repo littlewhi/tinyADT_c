@@ -11,7 +11,7 @@ int main( void )
 
     printf( "The new stack is %s\n", t->is_empty( t ) ? "empty" : "not empty" );
     printf( "The size of the stack is %d\n", t->_size );
-    for( i = 0; i < INITIAL_SIZE + 5; i++ )
+    for( i = 0; i < INITIAL_STACK_SIZE + 5; i++ )
     {
         t->push( t, i );
     }

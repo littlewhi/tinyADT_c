@@ -3,7 +3,7 @@
 
 typedef int size_suffix;
 
-#define INITIAL_SIZE 64
+#define INITIAL_STACK_SIZE 64
 
 #define GENERIC_DYNAMIC_STACK_STRUCT( element_type, suffix ) \
 struct stack_##suffix{ \
@@ -58,9 +58,9 @@ struct stack_##suffix *get_stack_object_##suffix( void ) \
     \
     ret = (struct stack_##suffix *) malloc( sizeof( struct stack_##suffix ) ); \
     assert( ret ); \
-    ret->_data = ( element_type *) malloc( sizeof( element_type ) * INITIAL_SIZE ); \
+    ret->_data = ( element_type *) malloc( sizeof( element_type ) * INITIAL_STACK_SIZE ); \
     assert( ret->_data ); \
-    ret->_size = INITIAL_SIZE; \
+    ret->_size = INITIAL_STACK_SIZE; \
     ret->_top = 0; \
     ret->is_empty = is_empty_##suffix; \
     ret->is_full = is_full_##suffix; \
